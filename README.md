@@ -6,6 +6,9 @@ provide cloud operation interface for volc Cloud
 
 ## refresh CDN
 ```php
+require './vendor/autoload.php';
+use EasyCloudRequest\Volc\Gateway;
+
 $type = 'file';
 $urls = [
     'your link'
