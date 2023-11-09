@@ -2,6 +2,11 @@
 provide cloud operation interface for volc Cloud
 
 
+# Install
+```
+composer require easy-cloud-request/volc -vvv
+```
+
 # Usage
 
 ## refresh CDN
@@ -48,4 +53,10 @@ $cloud = new SimpleCloud([
 ]);
 $result = $cloud->requests($request);
 var_dump($result);
+```
+
+# Others
+```bash
+composer run-script analyse
+composer run-script analyse ./src
 ```
