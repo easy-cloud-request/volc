@@ -9,7 +9,8 @@ composer require easy-cloud-request/volc -vvv
 
 # Usage
 
-## refresh CDN
+## 获取刷新与预热任务列表
+> https://www.volcengine.com/docs/6454/70437
 ```php
 require './vendor/autoload.php';
 use EasyCloudRequest\Volc\Gateway;
@@ -34,6 +35,37 @@ $request = new RequestBag(
         "Urls" => implode('\n', $urls)
     ]
 );
+```
+
+## 获取热点及访客的统计排名
+> https://www.volcengine.com/docs/6454/79322
+```php
+$request = new RequestBag(
+    'POST',
+    'https://cdn.volcengineapi.com',
+    [
+        "Action" => 'DescribeEdgeTopStatisticalData',
+        "Version" => '2021-03-01',
+        'region' => 'cn-north-1',
+        'service' => 'CDN',
+    ],
+    [],
+    [
+        'StartTime' => $startFieldCarbon->getTimestamp(),
+        'EndTime' => $endFieldCarbon->getTimestamp(),
+        'Domain' => 'www.baidu.com',
+        'Item' => 'url',
+        'Metric' => 'pv',
+    ]
+);
+```
+
+## send request
+```php
+require './vendor/autoload.php';
+use EasyCloudRequest\Volc\Gateway;
+use EasyCloudRequest\Core\Support\RequestBag;
+
 
 $cloud = new SimpleCloud([
     'default' => Gateway::class,
